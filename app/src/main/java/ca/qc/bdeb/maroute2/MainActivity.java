@@ -37,6 +37,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
+
         setContentView(R.layout.activity_main);
         initViews(); //
         initFragments();
