@@ -1,19 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/search_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <TextView
-        android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    >
+    <LinearLayout
+        android:id="@+id/search_1_layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="tab2"
-        android:id="@+id/textView2"
-        android:layout_gravity="center_vertical" />
+        android:clickable="true"
+        android:onClick="onClick">
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@mipmap/search_1_bus"
+            android:layout_weight="0"
+            android:layout_margin="10dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="51 - Android mon Petit"
+            android:layout_gravity="center"
+            android:layout_weight="4"
+            android:textSize="24dp"
+            android:gravity="center_horizontal" />
+    </LinearLayout>
 
-    <Button
-        android:layout_width="wrap_content"
+
+
+    <LinearLayout
+        android:id="@+id/search_2_layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/button2" />
-</LinearLayout>
+        android:layout_below="@id/search_1_layout">
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@mipmap/search_2_direction"
+            android:layout_weight="0"
+            android:layout_margin="10dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="East"
+            android:layout_gravity="center"
+            android:layout_weight="4"
+            android:textSize="24dp"
+            android:gravity="center_horizontal" />
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:id="@+id/search_3_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/search_2_layout">
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@mipmap/search_3_stop"
+            android:layout_weight="0"
+            android:layout_margin="10dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="510125 Field/Cornor"
+            android:layout_gravity="center"
+            android:layout_weight="4"
+            android:textSize="24dp"
+            android:gravity="center_horizontal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/search_4_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/search_3_layout">
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@mipmap/search_4_time"
+            android:layout_margin="10dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="12:00"
+            android:layout_gravity="center"
+            android:layout_weight="4"
+            android:textSize="24dp"
+            android:gravity="center_horizontal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_horizontal">
+
+        <ImageButton
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@mipmap/search_5_favorite_g"
+            android:layout_gravity="center"
+            android:background="?android:selectableItemBackground"
+
+
+
+            />
+    </LinearLayout>
+
+</RelativeLayout>
