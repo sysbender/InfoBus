@@ -2,30 +2,32 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/search_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
+
     <LinearLayout
         android:id="@+id/search_1_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
         android:onClick="onClick">
+
         <ImageView
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:src="@mipmap/search_1_bus"
+            android:layout_margin="10dp"
             android:layout_weight="0"
-            android:layout_margin="10dp"/>
+            android:src="@mipmap/search_1_bus" />
+
         <TextView
+            android:id="@+id/search_1_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="51 - Android mon Petit"
             android:layout_gravity="center"
             android:layout_weight="4"
-            android:textSize="24dp"
-            android:gravity="center_horizontal" />
+            android:gravity="center_horizontal"
+            android:text="51 - Android mon Petit"
+            android:textSize="24dp" />
     </LinearLayout>
-
 
 
     <LinearLayout
@@ -33,22 +35,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/search_1_layout">
+
         <ImageView
+
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:src="@mipmap/search_2_direction"
+            android:layout_margin="10dp"
             android:layout_weight="0"
-            android:layout_margin="10dp"/>
+            android:src="@mipmap/search_2_direction" />
+
         <TextView
+            android:id="@+id/search_2_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="East"
             android:layout_gravity="center"
             android:layout_weight="4"
-            android:textSize="24dp"
-            android:gravity="center_horizontal" />
+            android:gravity="center_horizontal"
+            android:text="East"
+            android:textSize="24dp" />
     </LinearLayout>
-
 
 
     <LinearLayout
@@ -56,20 +61,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/search_2_layout">
+
         <ImageView
+
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:src="@mipmap/search_3_stop"
+            android:layout_margin="10dp"
             android:layout_weight="0"
-            android:layout_margin="10dp"/>
+            android:src="@mipmap/search_3_stop" />
+
         <TextView
+            android:id="@+id/search_3_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="510125 Field/Cornor"
             android:layout_gravity="center"
             android:layout_weight="4"
-            android:textSize="24dp"
-            android:gravity="center_horizontal" />
+            android:gravity="center_horizontal"
+            android:text="510125 Field/Cornor"
+            android:textSize="24dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -77,19 +86,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/search_3_layout">
+
         <ImageView
+
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:src="@mipmap/search_4_time"
-            android:layout_margin="10dp"/>
+            android:layout_margin="10dp"
+            android:src="@mipmap/search_4_time" />
+
         <TextView
+            android:id="@+id/search_4_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="12:00"
             android:layout_gravity="center"
             android:layout_weight="4"
-            android:textSize="24dp"
-            android:gravity="center_horizontal" />
+            android:gravity="center_horizontal"
+            android:text="12:00"
+            android:textSize="24dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -99,12 +112,12 @@
         android:gravity="center_horizontal">
 
         <ImageButton
+            android:id="@+id/search_5_button"
             android:layout_width="64dp"
             android:layout_height="64dp"
-            android:src="@mipmap/search_5_favorite_g"
             android:layout_gravity="center"
             android:background="?android:selectableItemBackground"
-
+            android:src="@mipmap/search_5_favorite_g"
 
 
             />
