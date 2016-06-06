@@ -34,7 +34,9 @@
         android:id="@+id/search_2_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/search_1_layout">
+        android:layout_below="@id/search_1_layout"
+        android:clickable="true"
+        android:onClick="onClick">
 
         <ImageView
 
@@ -60,7 +62,9 @@
         android:id="@+id/search_3_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/search_2_layout">
+        android:layout_below="@id/search_2_layout"
+        android:clickable="true"
+        android:onClick="onClick">
 
         <ImageView
 

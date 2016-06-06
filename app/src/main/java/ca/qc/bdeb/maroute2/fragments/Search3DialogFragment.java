@@ -1,5 +1,6 @@
 package ca.qc.bdeb.maroute2.fragments;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -15,21 +16,33 @@ import android.widget.SearchView;
 import java.util.List;
 
 import ca.qc.bdeb.maroute2.R;
+import ca.qc.bdeb.maroute2.models.Direction;
 import ca.qc.bdeb.maroute2.models.Route;
+import ca.qc.bdeb.maroute2.models.Stop;
 import ca.qc.bdeb.maroute2.utils.DbGetter;
 
 /**
  * Created by jason on 6/5/2016.
  */
-public class Search1DialogFragment extends DialogFragment {
+public class Search3DialogFragment extends DialogFragment {
     SearchView ss_searchview;
     ListView ss_listview;
-    ArrayAdapter<Route> adapter;
+    ArrayAdapter<Stop> adapter;
     //request code
     private int requestCodeIn = 1;
     // to get the result from dialog
 
-    String[] test = {"hello", "salut"};
+
+    // for pass in arguments to DialogFragment
+    public static Search3DialogFragment newInstance(Route route, Direction direction){
+        Search3DialogFragment df = new Search3DialogFragment();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("route", route);
+        bundle.putSerializable("direction",direction);
+        df.setArguments(bundle);
+        return df;
+    }
+
 
     @Nullable
     @Override
@@ -37,6 +50,7 @@ public class Search1DialogFragment extends DialogFragment {
         View view = inflater.inflate(R.layout.search_select, null);
         //set title for dialog
         requestCodeIn = getTargetRequestCode();
+
         getDialog().setTitle("search and Select: ");
 
         //get view by id
@@ -64,28 +78,21 @@ public class Search1DialogFragment extends DialogFragment {
 
     private void setupListView() {
 
-        // query routes from db
+        //Route route =(Route) getActivity().getIntent().getExtras().getSerializable("route");
+        Route route = (Route)getArguments().getSerializable("route");
+        Direction direction = (Direction) getArguments().getSerializable("direction");
+
+        // query direction from db
         DbGetter db = DbGetter.getInstance(getActivity());
         db.open();
-        List<Route> routeList = db.getRouteList();
+        List<Stop> stopList = db.getStopList(route.getId(), direction.getId());
         db.close();
 
-        adapter = new ArrayAdapter<Route>(getActivity(), android.R.layout.simple_list_item_1, routeList);
+        adapter = new ArrayAdapter<Stop>(getActivity(), android.R.layout.simple_list_item_1, stopList);
         ss_listview.setAdapter(adapter);
 
     }
 
-    // for send back result
-    public void sendResult(Route route) {
-
-        Intent intent = new Intent();
-        //intent.putExtra("name","jason");
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("route", route);
-        intent.putExtras(bundle);
-        getTargetFragment().onActivityResult(getTargetRequestCode(), 1, intent);
-
-    }
 
     // inner class for ListView click listener
     private class HandleClickListView implements AdapterView.OnItemClickListener {
@@ -95,8 +102,14 @@ public class Search1DialogFragment extends DialogFragment {
         //public void onItemClick(AdapterView<?> parent, View view, int position, long id) { }
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             //String value = (String)adapter.getItemAtPosition(position);
-            Route route = adapter.getItem(position);
-            sendResult(route);
+            Stop stop = adapter.getItem(position);
+
+            Intent intent = new Intent();
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("stop", stop);
+            intent.putExtras(bundle);
+
+            getTargetFragment().onActivityResult(getTargetRequestCode(), Activity.RESULT_OK, intent);
             dismiss();
 
         }
