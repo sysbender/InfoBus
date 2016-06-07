@@ -43,12 +43,6 @@ public class Direction implements Serializable {
 
     }
 
-    @Override
-    public int hashCode() {
-        int result = id.hashCode();
-        result = 31 * result + headsign.hashCode();
-        return result;
-    }
 
     @Override
     public String toString() {

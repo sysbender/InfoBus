@@ -43,12 +43,7 @@ public class Stop implements Serializable {
 
     }
 
-    @Override
-    public int hashCode() {
-        int result = code.hashCode();
-        result = 31 * result + name.hashCode();
-        return result;
-    }
+
 
     @Override
     public String toString() {

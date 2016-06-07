@@ -20,6 +20,7 @@ public class DbHelper extends SQLiteAssetHelper {
     //constructor
     public DbHelper(Context context){
         super(context, DB_NAME, null, DB_VERSION);
+        //super(context, DB_NAME, context.getExternalFilesDir(null).getAbsolutePath(), null, DB_VERSION);
         this.context = context;
         //upgrade if ver <2
         //setForcedUpgrade(2);

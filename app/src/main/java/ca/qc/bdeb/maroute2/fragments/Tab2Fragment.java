@@ -72,17 +72,32 @@ public class Tab2Fragment extends Fragment implements View.OnClickListener {
     }
     // check bundled favorite from arguments
 
-    public void showFavorite(Favorite favorite) {
+
+
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+       // Log.e("test-onHiddenChanged", "on onHiddenChanged");
+        syncTextViews();
+        showArrivalTime();
+
+    }
+
+
+
+    public void setFavorite(Favorite favorite) {
                 route = favorite.getRoute();
                 direction = favorite.getDirection();
                 stop = favorite.getStop();
+
 
 
     }
 
     @Override
     public void onClick(View v) {
-        Log.d("========logcat====", "################### search button 5 clicked ##############################");
+        //Log.d("========logcat====", "################### search button 5 clicked ##############################");
         final FragmentManager fm = getFragmentManager();
 
         switch (v.getId()) {
@@ -91,10 +106,10 @@ public class Tab2Fragment extends Fragment implements View.OnClickListener {
                     Favorite f = new Favorite(route, direction, stop);
                     if (!favoriteList.contains(f)) {
                         favoriteList.add(f);
-                        Toast.makeText(this.getActivity(), getResources().getString(R.string.toast_favorite_added) + f.toString(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(this.getActivity(), getResources().getString(R.string.toast_favorite_added) + f.toString(), Toast.LENGTH_SHORT).show();
                     } else {
                         favoriteList.remove(f);
-                        Toast.makeText(this.getActivity(), getResources().getString(R.string.toast_favorite_removed) + f.toString(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(this.getActivity(), getResources().getString(R.string.toast_favorite_removed) + f.toString(), Toast.LENGTH_SHORT).show();
                     }
                     syncFavoriteButton();
                     try {

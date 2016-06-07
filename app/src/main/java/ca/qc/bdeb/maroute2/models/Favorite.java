@@ -55,13 +55,6 @@ public class Favorite implements Serializable{
 
     }
 
-    @Override
-    public int hashCode() {
-        int result = route.hashCode();
-        result = 31 * result + direction.hashCode();
-        result = 31 * result + stop.hashCode();
-        return result;
-    }
 
     @Override
     public String toString() {

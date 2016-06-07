@@ -3,12 +3,14 @@ package ca.qc.bdeb.maroute2.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.List;
@@ -40,7 +42,13 @@ public class Tab1Fragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        adapter.notifyDataSetChanged();
 
+
+    }
     private void setupListView() {
         adapter = new ArrayAdapter<Favorite>(getActivity(), R.layout.favorite_list_item, favoriteList);
         favoriteList_lv.setAdapter(adapter);
@@ -48,12 +56,12 @@ public class Tab1Fragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                Favorite favorite=  adapter.getItem(position);
-                //Bundle bundle = new Bundle();
-                //bundle.putSerializable("favorite", favorite);
-                //Tab2Fragment tab2Fragment = new Tab2Fragment();
-               // tab2Fragment.setArguments(bundle);
+
+
+                //Toast.makeText(getActivity(), favorite.toString(), Toast.LENGTH_SHORT).show();
+                ((Tab2Fragment )((((MainActivity)getActivity()).getTabFragmentList())[1])).setFavorite(favorite);
                 ((MainActivity)getActivity()).showTab(1);
-                ((Tab2Fragment )((((MainActivity)getActivity()).getTabFragmentList())[1])).showFavorite(favorite);
+
 
 
             }
