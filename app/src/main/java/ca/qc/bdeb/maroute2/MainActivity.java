@@ -12,18 +12,27 @@ import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
+import java.io.IOException;
+import java.util.ArrayList;
+
 import ca.qc.bdeb.maroute2.fragments.Tab1Fragment;
 import ca.qc.bdeb.maroute2.fragments.Tab2Fragment;
 import ca.qc.bdeb.maroute2.fragments.Tab3Fragment;
+import ca.qc.bdeb.maroute2.models.Favorite;
+import ca.qc.bdeb.maroute2.models.FavoriteList;
 
 public class MainActivity extends FragmentActivity implements View.OnClickListener {
+    //tab number
     private static final int TABNUM = 3;
+
     //layout for tab
     private LinearLayout[] mTabLayout = new LinearLayout[TABNUM];
     private int[] mTabLayoutID = {R.id.id_tab_1, R.id.id_tab_2, R.id.id_tab_3};
+
     //image for tab
     private ImageButton[] mTabImageButton = new ImageButton[TABNUM];
     private int[] mTabImageButtonID = {R.id.id_tab_1_img, R.id.id_tab_2_img, R.id.id_tab_3_img};
+
     //color, gray picture for table images
     private int[] mTabImageColorID = {R.mipmap.tab_1_c, R.mipmap.tab_2_c, R.mipmap.tab_3_c};
     private int[] mTabImageGrayID = {R.mipmap.tab_1_g, R.mipmap.tab_2_g, R.mipmap.tab_3_g};
@@ -31,6 +40,8 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
     private Fragment[] mTabFragment = {new Tab1Fragment(), new Tab2Fragment(), new Tab3Fragment()};
     //private Fragment[] mTabFragment = {null,null, null} ;
+
+    private FavoriteList favoriteList;
 
 
     @Override
@@ -42,11 +53,35 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
 
         setContentView(R.layout.activity_main);
+        favoriteList = new FavoriteList();
+        loadFavoriteList();
         initViews(); //
         initFragments();
         initEvents(); //
-        selectTab(0); //
+        showTab(0); //
     }
+
+    // load favorite from file
+    private void loadFavoriteList(){
+        try {
+            favoriteList.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public FavoriteList getFavoriteList(){
+        return this.favoriteList;
+    }
+
+    public Fragment[] getTabFragmentList(){
+        return mTabFragment;
+
+    }
+
 
     private void initFragments() {
         // mTabFragment = new
@@ -61,7 +96,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         }
 
     }
-
+    // get all the layout for tabs
     private void initViews() {
         for (int i = 0; i < TABNUM; i++) {
             mTabLayout[i] = (LinearLayout) findViewById(mTabLayoutID[i]);
@@ -104,7 +139,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 } else {
                     transaction.show(mTabFragment[t]);
                 }
-                Log.e("ma-route", "select " + t);
+                //Log.e("ma-route", "select " + t);
                 break;
             case 1:
                 mTabImageButton[t].setImageResource(mTabImageColorID[t]);
@@ -115,7 +150,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 } else {
                     transaction.show(mTabFragment[t]);
                 }
-                Log.e("ma-route", "select " + t);
+                //Log.e("ma-route", "select " + t);
                 break;
             case 2:
                 mTabImageButton[t].setImageResource(mTabImageColorID[t]);
@@ -126,14 +161,14 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
                 } else {
                     transaction.show(mTabFragment[t]);
                 }
-                Log.e("ma-route", "select " + t);
+                //Log.e("ma-route", "select " + t);
                 break;
         }
         transaction.commit();
     }
 
 
-    private void showTab(int t) {
+    public void showTab(int t) {
         //change img
         mTabImageButton[t].setImageResource(mTabImageColorID[t]);
         FragmentManager fm = getSupportFragmentManager();
@@ -162,7 +197,7 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         for (int i = 0; i < TABNUM; i++) {
             if (mTabFragment[i] != null) {
                 transaction.hide(mTabFragment[i]);
-                Log.e("ma-route", "hide " + i);
+                //Log.e("ma-route", "hide " + i);
             }
         }
 

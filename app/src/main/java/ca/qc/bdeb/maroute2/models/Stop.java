@@ -31,6 +31,26 @@ public class Stop implements Serializable {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Stop stop = (Stop) o;
+        return code.equals(stop.getCode()) ;
+
+       // if (!code.equals(stop.code)) return false;
+       // return name.equals(stop.name);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = code.hashCode();
+        result = 31 * result + name.hashCode();
+        return result;
+    }
+
+    @Override
     public String toString() {
         return  code + '-' +name ;
     }

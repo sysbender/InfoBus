@@ -1,5 +1,6 @@
 package ca.qc.bdeb.maroute2.fragments;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -83,7 +84,7 @@ public class Search1DialogFragment extends DialogFragment {
         Bundle bundle = new Bundle();
         bundle.putSerializable("route", route);
         intent.putExtras(bundle);
-        getTargetFragment().onActivityResult(getTargetRequestCode(), 1, intent);
+        getTargetFragment().onActivityResult(getTargetRequestCode(), Activity.RESULT_OK, intent);
 
     }
 

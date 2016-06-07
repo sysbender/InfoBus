@@ -50,7 +50,7 @@ public class DbGetter {
 
     public List<Route> getRouteList(){
         List<Route> routeList = new ArrayList<>();
-        Cursor cursor = database.rawQuery("select route_id, route_name from routes" , null);
+        Cursor cursor = database.rawQuery("select route_id, route_name from routes order by route_id" , null);
         cursor.moveToFirst();
         while(!cursor.isAfterLast()){
             routeList.add(new Route(cursor.getString(0), cursor.getString(1)));
