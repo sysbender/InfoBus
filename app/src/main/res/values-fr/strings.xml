@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MaRoute2</string>
+    <string name="search_1_tv_hint">Choisir la route</string>
+    <string name="search_2_tv_hint">Choisissez la direction</string>
+    <string name="search_3_tv_hint">Sélectionne l\'arrêt</string>
+    <string name="search_4_tv_hint">Heure d\'arrivée</string>
+    <string name="toast_favorite_added">Favori ajouté : </string>
+    <string name="toast_favorite_removed">Favori retiré : </string>
+</resources>
