@@ -56,7 +56,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         favoriteList = new FavoriteList();
         loadFavoriteList();
         initViews(); //
-        initFragments();
         initEvents(); //
         showTab(0); //
     }
@@ -82,11 +81,6 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
 
     }
 
-
-    private void initFragments() {
-        // mTabFragment = new
-
-    }
 
 
     //setOnclickListener for tab

@@ -23,21 +23,25 @@ import ca.qc.bdeb.maroute2.models.FavoriteList;
 
 
 /**
- * Created by jason on 6/3/2016.
+ * This tab shows the favorite list
  */
 public class Tab1Fragment extends Fragment {
     private ListView favoriteList_lv;
+    // ArrayList for favorite
     FavoriteList favoriteList;
+    // adapter for favorite listview
     ArrayAdapter<Favorite> adapter;
     MainActivity mainActivity;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.tab1_layout, container, false);
         // get listview
-        favoriteList_lv= (ListView) view.findViewById(R.id.favoriteList_lv);
+        favoriteList_lv = (ListView) view.findViewById(R.id.favoriteList_lv);
         //get favoriteList from mainActivity
-        favoriteList =((MainActivity)getActivity()).getFavoriteList();
+        favoriteList = ((MainActivity) getActivity()).getFavoriteList();
+        // setup
         setupListView();
         return view;
     }
@@ -49,21 +53,21 @@ public class Tab1Fragment extends Fragment {
 
 
     }
+
+
+    // use the favoriteList (ArrayList) from MainActivity as the adapter for ListView, setup OnItemClick
     private void setupListView() {
         adapter = new ArrayAdapter<Favorite>(getActivity(), R.layout.favorite_list_item, favoriteList);
         favoriteList_lv.setAdapter(adapter);
         favoriteList_lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-               Favorite favorite=  adapter.getItem(position);
-
-
-                //Toast.makeText(getActivity(), favorite.toString(), Toast.LENGTH_SHORT).show();
-                ((Tab2Fragment )((((MainActivity)getActivity()).getTabFragmentList())[1])).setFavorite(favorite);
-                ((MainActivity)getActivity()).showTab(1);
-
-
-
+                // get favorite object from clicked listview item
+                Favorite favorite = adapter.getItem(position);
+                // set the favorite for Tab2Fragment (search Fragment)
+                ((Tab2Fragment) ((((MainActivity) getActivity()).getTabFragmentList())[1])).setFavorite(favorite);
+                // let the MainActivity show the search Fragment with select Favorite
+                ((MainActivity) getActivity()).showTab(1);
             }
         });
 

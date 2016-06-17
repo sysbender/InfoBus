@@ -7,4 +7,6 @@
     <string name="search_4_tv_hint">Heure d\'arrivée</string>
     <string name="toast_favorite_added">Favori ajouté : </string>
     <string name="toast_favorite_removed">Favori retiré : </string>
+    <string name="searchTitle">Selectioner : </string>
+    <string name="searchHint">Rechercher : </string>
 </resources>

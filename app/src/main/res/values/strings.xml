@@ -6,4 +6,6 @@
     <string name="search_4_tv_hint">Arrival Time hh:mm:ss</string>
     <string name="toast_favorite_added">favorite added : </string>
     <string name="toast_favorite_removed">favorite removed : </string>
+    <string name="searchTitle">Search and Select : </string>
+    <string name="searchHint">Search : </string>
 </resources>

@@ -30,7 +30,7 @@ public class Search1DialogFragment extends DialogFragment {
     private int requestCodeIn = 1;
     // to get the result from dialog
 
-    String[] test = {"hello", "salut"};
+
 
     @Nullable
     @Override
@@ -38,7 +38,7 @@ public class Search1DialogFragment extends DialogFragment {
         View view = inflater.inflate(R.layout.search_select, null);
         //set title for dialog
         requestCodeIn = getTargetRequestCode();
-        getDialog().setTitle("search and Select: ");
+        getDialog().setTitle(R.string.searchTitle);
 
         //get view by id
         ss_searchview = (SearchView) view.findViewById(R.id.ss_searchview);
@@ -53,7 +53,7 @@ public class Search1DialogFragment extends DialogFragment {
         ss_listview.setOnItemClickListener(new HandleClickListView());
 
         //search hint
-        ss_searchview.setQueryHint("type to search");
+        ss_searchview.setQueryHint(getResources().getString(R.string.searchHint));
         ss_searchview.setOnQueryTextListener(new HandleQueryText());
 
 
