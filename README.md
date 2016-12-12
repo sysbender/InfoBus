@@ -8,11 +8,14 @@ Android App - check STM bus schedule offline
 
 ![](doc/2.png)
 
-![](doc/3.png)
 
 ![](doc/4.png)
 
 
+database (sqlite)
+
 ![](doc/dbDiagram.png)
+
+class diagram
 
 ![](doc/classDiagram.png)
